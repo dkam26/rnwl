@@ -1,0 +1,1 @@
+export const ClaimType = ["pending", "approved","rejected"]
