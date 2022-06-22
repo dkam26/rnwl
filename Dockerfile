@@ -1,10 +1,11 @@
 FROM node:16
 
 # Working directory
-WORKDIR /usr/src/app
+WORKDIR /rnwl
 
 # Install dependencies
 COPY package*.json ./
+
 
 RUN npm install
 
