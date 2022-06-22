@@ -1,4 +1,5 @@
 import { RequestHandler } from "express";
+import { PetModel } from "../pet/pet.model";
 import { ClaimModel } from "./claim.model";
 
 export const createClaim: RequestHandler = async (request, response) => {
@@ -19,12 +20,15 @@ export const getOneClaim: RequestHandler = async (request, response) => {
 };
 
 export const getAllClaim: RequestHandler = async (request, response) => {
-  const claim: ClaimModel[] = await ClaimModel.findAll();
+  const claim: ClaimModel[] = await ClaimModel.findAll({include: [
+    PetModel
+]});
   return response.status(200).json({
-    message: "Claim saved",
+    message: "Claims",
     data: claim,
   });
 };
+
 
 export const deleteOneClaim: RequestHandler = async (
   request,

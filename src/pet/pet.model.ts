@@ -4,7 +4,12 @@ import {
   Column,
   DataType,
   IsUUID,
+  HasMany,
+  BelongsTo,
+  ForeignKey,
 } from "sequelize-typescript";
+import { ClaimModel } from "../claim/claim.model";
+import { UserModel } from "../user/user.model";
 import { PetType, InsuranceStatus } from "./pet.types";
 
 @Table({
@@ -21,7 +26,7 @@ export class PetModel extends Model {
   id?: string;
   @Column({
     type: DataType.STRING,
-    unique: true
+    unique: true,
   })
   name!: string;
   @Column({
@@ -39,4 +44,14 @@ export class PetModel extends Model {
   })
   status!: string;
 
+  @ForeignKey(() => UserModel)
+  @Column({
+    type: DataType.STRING,
+  })
+  clientId!: string;
+  @HasMany(() => ClaimModel)
+  claims?: ClaimModel[];
+
+  @BelongsTo(() => UserModel)
+  pet!: UserModel;
 }

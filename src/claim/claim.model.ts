@@ -45,6 +45,6 @@ export class ClaimModel extends Model {
   })
   petId!: string;
 
-  @BelongsTo(() => PetModel, { as: "Pet", foreignKey: { name: "fk_pet" } })
+  @BelongsTo(() => PetModel )
   pet!: PetModel;
 }
