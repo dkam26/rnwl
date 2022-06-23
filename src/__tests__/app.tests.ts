@@ -17,9 +17,7 @@ const petCreated = {
 };
 const claimCreated = {
   description: "second-irot trial",
-
   date: "2022-06-22T15:19:26.441Z",
-
   cost: 45,
   status: "approved",
 };
@@ -86,7 +84,7 @@ it("can add claim", async () => {
     .post("/api/claim")
     .set("Authorization", `Bearer ${token}`)
     .send(claimCreated);
-    console.log(claimResponse.body)
+  console.log(claimResponse.body);
   expect(claimResponse.body).toHaveProperty("message");
   expect(claimResponse.body.message).toBe("Claim saved");
   expect(claimResponse.body).toHaveProperty("data");

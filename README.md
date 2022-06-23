@@ -48,6 +48,14 @@ To run the tests,use:
 
 ## Getting Started
 
+To run the app, use:
+
+ 1 docker-compose build
+
+ 2 docker-compose up
+
+
+
 
 ## End points
 ### Endpoints to create a user account and login into the application
