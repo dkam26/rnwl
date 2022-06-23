@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import { PetModel } from "../pet/pet.model";
 import { ClaimModel } from "../claim/claim.model";
+import { UserModel } from "../user/user.model";
 const connection = new Sequelize({
   dialect: "mysql",
   host: process.env.DB_HOST,
@@ -8,7 +9,7 @@ const connection = new Sequelize({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   logging: false,
-  models: [PetModel, ClaimModel],
+  models: [PetModel, ClaimModel, UserModel],
 });
 
 export default connection;

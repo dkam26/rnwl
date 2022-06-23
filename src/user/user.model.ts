@@ -9,7 +9,7 @@ import {
 import { PetModel } from "../pet/pet.model";
 
 @Table({
-  tableName: "pet",
+  tableName: "user",
   timestamps: true,
 })
 export class UserModel extends Model {

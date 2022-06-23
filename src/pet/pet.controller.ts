@@ -1,8 +1,12 @@
-import { RequestHandler } from "express";
+import { RequestHandler, Request } from "express";
 import { ClaimModel } from "../claim/claim.model";
 import { PetModel } from "./pet.model";
+import { ICreatePetInterface, IResponsePetInterface } from "./pet.interfaces";
 
-export const createPet: RequestHandler = async (request, response) => {
+export const createPet: RequestHandler = async (
+  request: ICreatePetInterface,
+  response: IResponsePetInterface
+) => {
   const pet = await PetModel.create({ ...request.body });
   return response.status(200).json({
     message: "Pet saved",
@@ -10,43 +14,55 @@ export const createPet: RequestHandler = async (request, response) => {
   });
 };
 
-export const getOnePet: RequestHandler = async (request, response) => {
+export const getOnePet: RequestHandler = async (
+  request: Request,
+  response: IResponsePetInterface
+) => {
   const { id } = request.params;
-  const claim: PetModel | null = await PetModel.findOne({
+  const pet: PetModel | null = await PetModel.findOne({
     where: { id },
     include: [ClaimModel],
   });
   return response.status(200).json({
     message: "Pet",
-    data: claim,
+    data: pet,
   });
 };
 
-export const getAllPets: RequestHandler = async (request, response) => {
-  const claim: PetModel[] = await PetModel.findAll();
+export const getAllPets: RequestHandler = async (
+  request: Request,
+  response: IResponsePetInterface
+) => {
+  const pet: PetModel[] = await PetModel.findAll();
   return response.status(200).json({
     message: "Pets",
-    data: claim,
+    data: pet,
   });
 };
 
-export const deleteOnePet: RequestHandler = async (request, response) => {
+export const deleteOnePet: RequestHandler = async (
+  request: Request,
+  response: IResponsePetInterface
+) => {
   const { id } = request.params;
-  const claimToDelete: PetModel | null = await PetModel.findByPk(id);
+  const petToDelete: PetModel | null = await PetModel.findByPk(id);
 
   await PetModel.destroy({ where: { id } });
   return response.status(200).json({
     message: "Pet deleted",
-    data: claimToDelete,
+    data: petToDelete,
   });
 };
 
-export const updatePet: RequestHandler = async (request, response) => {
+export const updatePet: RequestHandler = async (
+  request: Request,
+  response: IResponsePetInterface
+) => {
   const { id } = request.params;
   await PetModel.update({ ...request.body }, { where: { id } });
-  const claim: PetModel | null = await PetModel.findByPk(id);
+  const pet: PetModel | null = await PetModel.findByPk(id);
   return response.status(200).json({
     message: "Pet updated",
-    data: claim,
+    data: pet,
   });
 };
