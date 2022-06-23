@@ -38,11 +38,11 @@ Tools used for development of this API are;
 
 To run the tests,use:
 
-docker-compose build
+ 1 docker-compose build
 
-docker-compose up -d
+ 2 docker-compose up -d
 
-npm test
+ 3 npm test
 
 
 
