@@ -30,7 +30,7 @@ Tools used for development of this API are;
 - API development environment: [Postman](https://www.getpostman.com)
 - Editor: [Vs code](https://code.visualstudio.com)
 - Database: [Postgresql](https://www.mysql.com/)
-- Framework: [Django](https://expressjs.com/)
+- Framework: [Express](https://expressjs.com/)
 - Programming language: [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ## Tests
