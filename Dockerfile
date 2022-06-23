@@ -14,4 +14,5 @@ COPY . .
 
 EXPOSE 3000
 
+# Dev
 CMD ["npm", "start"]

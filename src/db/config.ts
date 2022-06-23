@@ -2,6 +2,7 @@ import { Sequelize } from "sequelize-typescript";
 import { PetModel } from "../pet/pet.model";
 import { ClaimModel } from "../claim/claim.model";
 import { UserModel } from "../user/user.model";
+
 const connection = new Sequelize({
   dialect: "mysql",
   host: process.env.DB_HOST,

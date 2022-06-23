@@ -1,4 +1,4 @@
-import express, { application } from "express";
+import express from "express";
 import { json, urlencoded } from "body-parser";
 import connection from "./db/config";
 import petRouter from "./pet/pet.router";
@@ -20,11 +20,14 @@ connection
   .sync({ force: true })
   .then(() => {
     console.log("Database synced succesfully");
+    app.listen(3000, () => {
+        console.log("server running");
+      });
   })
   .catch((error) => {
     console.log({ Error: error });
   });
 
-app.listen(3000, () => {
-  console.log("server running");
-});
+
+
+export default app;

@@ -40,10 +40,10 @@ export class ClaimModel extends Model {
   status!: string;
 
   @ForeignKey(() => PetModel)
-  @Column({
-    type: DataType.STRING,
-  })
-  petId!: string;
+    @Column({
+        type: DataType.STRING,
+    })
+    petId!: string;
 
   @BelongsTo(() => PetModel )
   pet!: PetModel;
